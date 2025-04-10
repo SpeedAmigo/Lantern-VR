@@ -14798,6 +14798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e30863dc12115e4f89635bb0f010e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leverAtMax: 0
+  leverAtMin: 0
 --- !u!1 &4581292472285887089
 GameObject:
   m_ObjectHideFlags: 0

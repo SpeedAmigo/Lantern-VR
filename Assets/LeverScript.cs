@@ -28,12 +28,12 @@ public class LeverScript : MonoBehaviour
 
     private void LeverAtMax(float angle)
     {
-        if (Mathf.Abs(angle - joint.limits.max) <= tolerance && !leverAtMax)
+        if (!leverAtMax && Mathf.Abs(angle - joint.limits.max) <= tolerance)
         {
             Debug.Log("On");
             leverAtMax = true;
         }
-        else
+        else if (Mathf.Abs(angle - joint.limits.max) > tolerance)
         {
             leverAtMax = false;
         }
@@ -41,12 +41,12 @@ public class LeverScript : MonoBehaviour
 
     private void LeverAtMin(float angle)
     {
-        if (Mathf.Abs(angle + joint.limits.min) <= tolerance && !leverAtMin)
+        if (Mathf.Abs(angle - joint.limits.min) <= tolerance && !leverAtMin)
         {
             Debug.Log("Off");
             leverAtMin = true;
         }
-        else
+        else if (Mathf.Abs(angle - joint.limits.min) > tolerance)
         {
             leverAtMin = false;
         }
