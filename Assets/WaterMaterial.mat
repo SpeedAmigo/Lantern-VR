@@ -52,11 +52,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _Float: 0
-    - _NoiseScale: 7.7
+    - _NoiseScale: 22.3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 0.127
-    - _WaveScale: 0.535
+    - _Speed: 0.083
+    - _WaveScale: 0.936
     m_Colors:
     - _Color: {r: 0, g: 0.14409918, b: 0.1792453, a: 0}
   m_BuildTextureStacks: []
