@@ -37,8 +37,6 @@ public class CrowBarBoxScript : MonoBehaviour
             
             if (rb != null)
             {
-                Debug.Log(impactForce * powerMultiplier);
-                
                 rb.AddExplosionForce(impactForce * powerMultiplier, hitPosition, radius);
             }
         }

@@ -11,9 +11,8 @@ public class ControllPanelScript : SerializedMonoBehaviour
 
     [SerializeField] Material offMaterial;
     [SerializeField] Material onMaterial;
-
-    [Button]
-    private void ChangeLight(int value)
+    
+    public void ChangeLight(int value)
     {
         var bulbs = switches[value];
         

@@ -23,7 +23,6 @@ public class WholeGlassScript : MonoBehaviour
         if (objectRb.linearVelocity.magnitude > hardnessLevel)
         {
             float impactForce = objectRb.linearVelocity.magnitude;
-            Debug.Log(impactForce);
             
             EventManager.InvokeOnBreakGlass(hitPoint, contact.normal, impactForce);
         }
