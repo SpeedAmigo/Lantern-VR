@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(HingeJoint))]
 public class LeverScript : MonoBehaviour
@@ -7,6 +8,9 @@ public class LeverScript : MonoBehaviour
 
     public bool leverAtMax;
     public bool leverAtMin;
+    
+    [SerializeField] UnityEvent onLeverOn;
+    [SerializeField] UnityEvent onLeverOff;
 
     private float tolerance = 0.5f;
 
@@ -26,29 +30,29 @@ public class LeverScript : MonoBehaviour
         return joint.angle;
     }
 
-    private void LeverAtMax(float angle)
+    private void LeverAtMin(float angle)
     {
         if (!leverAtMax && Mathf.Abs(angle - joint.limits.max) <= tolerance)
         {
-            Debug.Log("On");
-            leverAtMax = true;
+            onLeverOff?.Invoke();
+            leverAtMin = true;
         }
         else if (Mathf.Abs(angle - joint.limits.max) > tolerance)
         {
-            leverAtMax = false;
+            leverAtMin = false;
         }
     }
 
-    private void LeverAtMin(float angle)
+    private void LeverAtMax(float angle)
     {
         if (Mathf.Abs(angle - joint.limits.min) <= tolerance && !leverAtMin)
         {
-            Debug.Log("Off");
-            leverAtMin = true;
+            onLeverOn?.Invoke();
+            leverAtMax = true;
         }
         else if (Mathf.Abs(angle - joint.limits.min) > tolerance)
         {
-            leverAtMin = false;
+            leverAtMax = false;
         }
     }
 }
