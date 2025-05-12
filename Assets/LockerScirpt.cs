@@ -21,6 +21,7 @@ public class LockerScirpt : MonoBehaviour
         }
         else
         {
+            if (wheelsOnPosition >= 0) return;
             wheelsOnPosition--;
         }
         
