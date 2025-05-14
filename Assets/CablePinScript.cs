@@ -11,7 +11,7 @@ public class CablePinScript : MonoBehaviour
     public void OnCableDrop()
     {
         RaycastHit hit;
-        if (Physics.Raycast(cableSocket.position, cableSocket.forward, out hit, 0.1f, LayerMask.GetMask("CablePin")))
+        if (Physics.Raycast(cableSocket.position, cableSocket.forward, out hit, 0.1f))
         {
             if (hit.collider.TryGetComponent<SocketScript>(out var socket))
             {
