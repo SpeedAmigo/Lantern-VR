@@ -7,9 +7,7 @@ public class SocketParentScript : MonoBehaviour
     [SerializeField] private List<SocketScript> socketList;
 
     public void CheckSockets()
-    {
-        Debug.Log("Checking sockets");
-        
+    {   
         bool allPlugged = socketList.All(socket => socket.isPluggedIn);
 
         if (allPlugged)

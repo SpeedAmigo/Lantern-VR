@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3804107326485474167}
   - component: {fileID: 1206286945522428276}
   - component: {fileID: 1593300029009322824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cableSocket: {fileID: 4874349101892608945}
   isPluggedIn: 0
-  socketValue: 3
+  socketValue: 1
+  parent: {fileID: 0}
 --- !u!1 &3874596331196817040
 GameObject:
   m_ObjectHideFlags: 0

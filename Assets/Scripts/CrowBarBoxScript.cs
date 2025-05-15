@@ -7,6 +7,7 @@ public class CrowBarBoxScript : MonoBehaviour
     
     [SerializeField] private float radius;
     [SerializeField] private float powerMultiplier;
+    [SerializeField] private CrowbarScript crowBar;
 
     private void OnEnable()
     {
@@ -40,6 +41,8 @@ public class CrowBarBoxScript : MonoBehaviour
                 rb.AddExplosionForce(impactForce * powerMultiplier, hitPosition, radius);
             }
         }
+
+        crowBar.SetGrabbAble();
     }
     
     [Button]

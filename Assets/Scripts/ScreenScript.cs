@@ -8,7 +8,7 @@ public class ScreenScript : MonoBehaviour
     
     public void AddNumber(int number)
     {
-        if (inputField.text.Length >= 5) return; 
+        if (inputField.text.Length >= 4) return; 
         inputField.text += number.ToString();
     }
 
