@@ -11,17 +11,29 @@ public class LockerScirpt : MonoBehaviour
     public void CheckWheels(LockerWheelScript wheel)
     {
         Vector3 current = NormalizeEulerAngles(wheel.transform.localEulerAngles);
-        Vector3 target = NormalizeEulerAngles(wheel.targetRotation);
+        Vector3 target1 = NormalizeEulerAngles(wheel.targetRotation[0]);
+        Vector3 target2 = NormalizeEulerAngles(wheel.targetRotation[1]);
         
-        Vector3 delta = current - target;
+        Vector3 delta1 = current - target1;
+        Vector3 delta2 = current - target2;
         
-        if (Mathf.Abs(delta.x) < 0.1f && Mathf.Abs(delta.y) < 0.1f && Mathf.Abs(delta.z) < 0.1f)
+        if (Mathf.Abs(delta1.x) < 0.1f && Mathf.Abs(delta1.y) < 0.1f && Mathf.Abs(delta1.z) < 0.1f)
         {
             wheelsOnPosition++;
         }
         else
         {
-            if (wheelsOnPosition >= 0) return;
+            if (wheelsOnPosition <= 0) return;
+            wheelsOnPosition--;
+        }
+        
+        if (Mathf.Abs(delta2.x) < 0.1f && Mathf.Abs(delta2.y) < 0.1f && Mathf.Abs(delta2.z) < 0.1f)
+        {
+            wheelsOnPosition++;
+        }
+        else
+        {
+            if (wheelsOnPosition <= 0) return;
             wheelsOnPosition--;
         }
         
