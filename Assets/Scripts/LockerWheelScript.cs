@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class LockerWheelScript : MonoBehaviour
 {
-    [SerializeField] private LockerScirpt locker;
-    public Vector3[] targetRotation;
     private float duration = 0.5f;
 
     private Tween rotationTween;
@@ -14,14 +12,13 @@ public class LockerWheelScript : MonoBehaviour
         if (rotationTween != null && rotationTween.IsActive() && rotationTween.IsPlaying())
             return;   
         
-        rotationTween = transform.DORotate(transform.eulerAngles + new Vector3(0, stepDegrees, 0), 
-            duration, 
-            RotateMode.Fast)
+        Quaternion targetRotation = transform.rotation * Quaternion.Euler(0f, stepDegrees, 0f);
+        
+        rotationTween = transform.DORotateQuaternion(targetRotation, duration)
             .SetEase(Ease.InOutSine)
             .OnComplete(() =>
             {
                 rotationTween = null; 
-                locker.CheckWheels(this);
             });
     }
     
@@ -30,14 +27,13 @@ public class LockerWheelScript : MonoBehaviour
         if (rotationTween != null && rotationTween.IsActive() && rotationTween.IsPlaying())
             return; 
         
-        rotationTween = transform.DORotate(transform.eulerAngles + new Vector3(stepDegrees, 0, 0), 
-                duration, 
-                RotateMode.Fast)
+        Quaternion targetRotation = transform.rotation * Quaternion.Euler(stepDegrees, 0f, 0f);
+        
+        rotationTween = transform.DORotateQuaternion(targetRotation, duration)
             .SetEase(Ease.InOutSine)
             .OnComplete(() =>
             {
                 rotationTween = null; 
-                locker.CheckWheels(this);
             });
     }
 
