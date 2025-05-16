@@ -1,10 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScreenScript : MonoBehaviour
 {
     [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private int codeNumber = 12345;
+    [SerializeField] private int codeNumber = 1234;
+    
+    [SerializeField] private UnityEvent onCodeCorrect;
     
     public void AddNumber(int number)
     {
@@ -22,7 +25,8 @@ public class ScreenScript : MonoBehaviour
     {
         if (inputField.text == codeNumber.ToString())
         {
-            Debug.Log("Code is correct");
+            onCodeCorrect?.Invoke();
+            inputField.text = "_";
         }
     }
 }
