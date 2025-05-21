@@ -8,7 +8,14 @@ public class CrowBarBoxScript : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private float powerMultiplier;
     [SerializeField] private CrowbarScript crowBar;
+    
+    private AudioSource audioSource;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    
     private void OnEnable()
     {
         EventManager.OnBreakGlass += BreakGlass;
@@ -26,6 +33,8 @@ public class CrowBarBoxScript : MonoBehaviour
         Vector3 explosionPoint = hitPosition - hitNormal * 0.5f;
         
         CreateExplosion(explosionPoint, impactForce);
+        
+        audioSource.PlayOneShot(audioSource.clip);
     }
 
     private void CreateExplosion(Vector3 hitPosition, float impactForce)

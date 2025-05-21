@@ -8,6 +8,7 @@ public class LiftDoorScript : MonoBehaviour
     [SerializeField] private DOTweenAnimation animation2;
     
     [SerializeField] private PowerManager powerManager;
+    [SerializeField] private AudioSource audioSource;
     
     [Button]
     public void OpenDoor()
@@ -16,6 +17,7 @@ public class LiftDoorScript : MonoBehaviour
         {
             animation1.DOPlayForward();
             animation2.DOPlayForward();
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 

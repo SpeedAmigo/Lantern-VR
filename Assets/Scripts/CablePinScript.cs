@@ -6,6 +6,9 @@ public class CablePinScript : MonoBehaviour
     [Range(1,6)] public int cableValue;
     [SerializeField] private Transform cableSocket;
 
+    [SerializeField] private AudioClip cableSound;
+    
+    private AudioSource audioSource;
     private Rigidbody _rb;
 
     public void OnCableDrop()
@@ -18,6 +21,7 @@ public class CablePinScript : MonoBehaviour
                 _rb.isKinematic = true;
                 transform.position = socket.cableSocket.position;
                 transform.rotation = socket.cableSocket.rotation;
+                audioSource.PlayOneShot(cableSound);
                 socket.CheckCable(this);
             }
         }
@@ -34,6 +38,7 @@ public class CablePinScript : MonoBehaviour
             _rb.isKinematic = true;
             transform.position = socket.cableSocket.position;
             transform.rotation = socket.cableSocket.rotation;
+            audioSource.PlayOneShot(cableSound);
             socket.CheckCable(this);
         }
     }
@@ -41,5 +46,6 @@ public class CablePinScript : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 }

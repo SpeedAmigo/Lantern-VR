@@ -1,14 +1,19 @@
+using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(AudioSource))]
 public class LockerScirpt : MonoBehaviour
 {
     [SerializeField] private int wheelsOnPosition;
     [SerializeField] private Rigidbody lockerRigidbody;
     [SerializeField] private Rigidbody torusRigidbody;
     
-    [ShowInInspector] private UnityEvent onAllWheelsOnPosition;
+    [SerializeField] private AudioClip openSound;
+    private AudioSource audioSource;
+    
+    [SerializeField] private UnityEvent onAllWheelsOnPosition;
     
     private void CheckWheelsOnPosition()
     {
@@ -18,6 +23,7 @@ public class LockerScirpt : MonoBehaviour
             torusRigidbody.useGravity = true;
             torusRigidbody.isKinematic = false;
             
+            audioSource.PlayOneShot(openSound);
             onAllWheelsOnPosition?.Invoke();
         }
     }
@@ -34,5 +40,10 @@ public class LockerScirpt : MonoBehaviour
     {
         if (wheelsOnPosition <= 0) return;
         wheelsOnPosition--;
+    }
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 }

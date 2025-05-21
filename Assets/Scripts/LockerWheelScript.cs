@@ -32,6 +32,8 @@ public class LockerWheelScript : MonoBehaviour
         if (rotationTween != null && rotationTween.IsActive() && rotationTween.IsPlaying())
             return; 
         
+        audioSource.PlayOneShot(rotateSound);
+        
         Quaternion targetRotation = transform.rotation * Quaternion.Euler(stepDegrees, 0f, 0f);
         
         rotationTween = transform.DORotateQuaternion(targetRotation, duration)
