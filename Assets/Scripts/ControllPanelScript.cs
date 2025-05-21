@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class ControllPanelScript : SerializedMonoBehaviour
 {
@@ -11,6 +12,9 @@ public class ControllPanelScript : SerializedMonoBehaviour
 
     [SerializeField] Material offMaterial;
     [SerializeField] Material onMaterial;
+    
+    [SerializeField] private LightBulbSocketScript lightBulbSocketScript;
+    [SerializeField] private UnityEvent onAllPluggedIn;
     
     public void ChangeLight(int value)
     {
@@ -46,7 +50,10 @@ public class ControllPanelScript : SerializedMonoBehaviour
     {
         if (bulbsMaterials.All(bulb => bulb.sharedMaterial == onMaterial))
         {
-            Debug.Log("Running!");
+            if (lightBulbSocketScript.hasLightBulb)
+            {
+                onAllPluggedIn?.Invoke();
+            }
         }
     }
 }

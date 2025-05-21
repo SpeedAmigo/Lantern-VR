@@ -9,12 +9,10 @@ public class CheckColliderScript : MonoBehaviour
         if (!other.TryGetComponent<NumColliderScript>(out var numCollider)) return;
         
         lockerScript.AddWheel();
-        Debug.Log("Added wheel");
     }
 
     private void OnTriggerExit(Collider other)
     {
         lockerScript.RemoveWheel();
-        Debug.Log("Removed wheel");
     }
 }

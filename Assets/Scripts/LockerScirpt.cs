@@ -1,18 +1,24 @@
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LockerScirpt : MonoBehaviour
 {
     [SerializeField] private int wheelsOnPosition;
-    [SerializeField] Rigidbody lockerRigidbody;
+    [SerializeField] private Rigidbody lockerRigidbody;
+    [SerializeField] private Rigidbody torusRigidbody;
+    
+    [ShowInInspector] private UnityEvent onAllWheelsOnPosition;
     
     private void CheckWheelsOnPosition()
     {
         if (wheelsOnPosition == 4)
         {
-            Debug.Log("Unlocked!");
             lockerRigidbody.useGravity = true;
+            torusRigidbody.useGravity = true;
+            torusRigidbody.isKinematic = false;
+            
+            onAllWheelsOnPosition?.Invoke();
         }
     }
 

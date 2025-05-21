@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class SocketParentScript : MonoBehaviour
 {
     [SerializeField] private List<SocketScript> socketList;
+    [SerializeField] private UnityEvent onAllPluggedIn;
 
     public void CheckSockets()
     {   
@@ -12,7 +14,7 @@ public class SocketParentScript : MonoBehaviour
 
         if (allPlugged)
         {
-            Debug.Log("All sockets are plugged in");
+            onAllPluggedIn?.Invoke();
         }
     }
 }

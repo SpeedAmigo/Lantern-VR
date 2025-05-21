@@ -8,11 +8,22 @@ public class LiftScript : MonoBehaviour
     [SerializeField] private DOTweenAnimation animation2;
     [SerializeField] private LiftDoorScript liftDoorScript;
     
+    public bool canBeMoved = true;
+    
+    public void ChangeCanBeMoved(bool value)
+    {
+        canBeMoved = value;
+    }
+    
     [Button]
     public void StartLift()
     {
+        if (!canBeMoved) return;
         animation1.DOPlay();
         animation2.DOPlay();
-        liftDoorScript.CloseDoor();
+        if (liftDoorScript != null)
+        {
+            liftDoorScript.CloseDoor();
+        }
     }
 }
