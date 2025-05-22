@@ -26,12 +26,4 @@ public class LiftScript : MonoBehaviour
             liftDoorScript.CloseDoor();
         }
     }
-
-    public void StartLiftBackwards()
-    {
-        if (!canBeMoved) return;
-        
-        animation1.DOPlayBackwards();
-        animation2.DOPlayBackwards();
-    }
 }

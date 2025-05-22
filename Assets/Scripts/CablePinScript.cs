@@ -21,7 +21,6 @@ public class CablePinScript : MonoBehaviour
                 _rb.isKinematic = true;
                 transform.position = socket.cableSocket.position;
                 transform.rotation = socket.cableSocket.rotation;
-                audioSource.PlayOneShot(cableSound);
                 socket.CheckCable(this);
             }
         }

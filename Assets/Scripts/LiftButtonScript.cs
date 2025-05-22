@@ -22,12 +22,4 @@ public class LiftButtonScript : MonoBehaviour
             lift.StartLift();
         }
     }
-
-    public void StartLiftBackward()
-    {
-        if (usePower == false)
-        {
-            lift.StartLiftBackwards();
-        }
-    }
 }

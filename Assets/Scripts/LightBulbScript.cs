@@ -5,6 +5,7 @@ public class LightBulbScript : MonoBehaviour
 {
     private Rigidbody _rb;
     private XRGrabInteractable grabAbble;
+    private MeshRenderer meshRenderer;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +18,10 @@ public class LightBulbScript : MonoBehaviour
             transform.rotation = socket.socketTransform.rotation;      
             socket.hasLightBulb = true;
             grabAbble.enabled = false;
+            Material mat = meshRenderer.material;
+            
+            mat.EnableKeyword("_EMISSION");
+            mat.SetColor("_EmissionColor", Color.white * 100);
         }
     }
     
@@ -24,5 +29,6 @@ public class LightBulbScript : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         grabAbble = GetComponent<XRGrabInteractable>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
 }
